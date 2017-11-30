@@ -33,5 +33,12 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Query("select new ru.javabegin.training.library.domain.Book(b.id, b.image) from Book b")
     List<Book> findTopBooks(Pageable pageable);
 
+    // поиск книг по жанру
+    @Query("select new ru.javabegin.training.library.domain.Book(b.id, b.name, b.pageCount, b.isbn, b.genre, b.author, b.publisher, b.publishYear, b.image, b.descr, b.viewCount, b.totalRating, b.totalVoteCount, b.avgRating) from Book b where b.genre.id = :genreid")
+    Page<Book> findByGenre(@Param("genreId") long genreId, Pageable pageable);
+
+    // получение контента по id книги
+    @Query("select b.content from Book b where b.id = :id")
+    byte[] getContent(@Param("id") long id);
 
 }
