@@ -14,7 +14,7 @@
         </locale-config>
 
         <resource-bundle>
-            <base-name>library</base-name>
+            <base-name>library</base-name> <!-- название файла с ресурсами (без постфикса) - должно совпадать -->
             <var>msg</var>
         </resource-bundle>
 
