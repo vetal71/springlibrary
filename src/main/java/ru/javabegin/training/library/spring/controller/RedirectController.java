@@ -1,16 +1,9 @@
 package ru.javabegin.training.library.spring.controller;
 
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ru.javabegin.training.library.domain.Book;
-import ru.javabegin.training.library.spring.repository.AuthorRepository;
-import ru.javabegin.training.library.spring.repository.BookRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,19 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 @Log
 public class RedirectController {
 
-    @Autowired
-    private AuthorRepository authorRepository;
-
-    @Autowired
-    private BookRepository bookRepository;
 
     // при запуске проекта - первый запрос попадает сюда
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String baseUrlRedirect(HttpServletRequest request, HttpServletResponse httpServletResponse) {
 
-        Page<Book> bookList = bookRepository.findAllWithoutContent(new PageRequest(0, 10, new Sort(Sort.Direction.ASC, "name")));
+        // перенаправление на страницу индекс
+        return "redirect:" + request.getRequestURL().append("index.xhtml").toString();
 
-        return "ok";
     }
 
 

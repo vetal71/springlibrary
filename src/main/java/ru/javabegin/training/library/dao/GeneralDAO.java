@@ -9,10 +9,10 @@ import java.util.List;
 // общее поведения для всех DAO объектов
 public interface GeneralDAO<T>{
 
-    // получение всех записей
+    // получение всех записей (без постраничности)
     List<T> getAll();
 
-    // поиск записей с любым количеством параметров
+    // поиск записей с любым количествомм параметров
     List<T> search(String... searchString);
 
     // получение объекта по id
@@ -24,13 +24,14 @@ public interface GeneralDAO<T>{
     // удаление объекта
     void delete(T object);
 
-    // получение списка всех объектов с сортировкой
+    // получение всех записей с сортировкой результата
     List<T> getAll(Sort sort);
 
-    // получение всех запией с постраничностью
+    // получение всех записей с постраничностью
     Page<T> getAll(int pageNumber, int pageSize, String sortField, Sort.Direction sortDirection);
 
-    // поиск всех записей с постраничностью
+    // поиск записей с постраничностью
     Page<T> search(int pageNumber, int pageSize, String sortField, Sort.Direction sortDirection, String... searchString);
+
 
 }

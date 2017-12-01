@@ -18,4 +18,10 @@ public interface BookDao extends GeneralDAO<Book>{
     // постраничный вывод книг определенного жанра
     Page<Book> findByGenre(int pageNumber, int pageSize, String sortField, Sort.Direction sortDirection, long genreId);
 
+    // обновление статистики просмотра книги
+    void updateViewCount(long viewCount, long id);
+
+    // обновить данные рейтинга
+    void updateRating(long totalRating, long totalVoteCount, int avgRating, long id);
+
 }

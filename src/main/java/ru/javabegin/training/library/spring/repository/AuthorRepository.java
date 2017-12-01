@@ -8,7 +8,7 @@ import ru.javabegin.training.library.domain.Author;
 
 import java.util.List;
 
-@Repository // специальный Spring bean, который помечает интерфейс как Repository
+@Repository // создается специальный Spring bean, выполняет запросы в БД
 public interface AuthorRepository extends JpaRepository<Author, Long> {// JpaRepository - содержит CRUD функционал + постраничность
 
     // на основании имени метода будет построен Hibernate запрос
